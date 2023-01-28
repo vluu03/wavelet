@@ -11,10 +11,7 @@ class Handler implements URLHandler {
 
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
-            return String.format("Vincent's Number: %d", num);
-        } else if (url.getPath().equals("/increment")) {
-            num += 1;
-            return String.format("Number incremented!");
+            return String.format("No Strings Added!");
         } else {
             System.out.println("Path: " + url.getPath());
             if (url.getPath().contains("/add-message")) {
@@ -22,7 +19,8 @@ class Handler implements URLHandler {
                 if (parameters[0].equals("s")) {
                     stringList.add(string_num,parameters[1]);
                     string_num++;
-                    return stringList.toString();
+                    String joinedList = String.join("\n", stringList);
+                    return joinedList;
                 }
             }
             return "404 Not Found!";
